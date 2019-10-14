@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跟我做css3的ppt（Animation介绍&Animation.css应用）</title>
+</head>
+<style type="text/css">
+    .demo {
+        position: relative;
+        margin: 15px;
+        font-size: 12px;
+    }
+
+    @keyframes bigBoy {
+        0% {
+            margin-left: 0;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            background: #f07709;
+        }
+
+        50% {
+            margin-left: 180px;
+            width: 70px;
+            height: 70px;
+            line-height: 50px;
+            background: #c00;
+        }
+
+        100% {
+            margin-left: 360px;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            background: #514bad;
+        }
+    }
+
+    /* 兼容webkit内核 */
+    @-webkit-keyframes bigBoy {
+        0% {
+            margin-left: 0;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            background: #f07709;
+        }
+
+        50% {
+            margin-left: 180px;
+            width: 70px;
+            height: 70px;
+            line-height: 50px;
+            background: #c00;
+        }
+
+        100% {
+            margin-left: 360px;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            background: #514bad;
+        }
+    }
+
+    .demo:hover .box {
+        animation-name: bigBoy;
+        /*动画属性名，也就是我们前面keyframes定义的动画名*/
+        animation-duration: 2s;
+        /*动画持续时间*/
+        -webkit-animation-name: bigBoy;
+        /* 兼容webkit内核 */
+        -webkit-animation-duration: 2s;
+        /* 兼容webkit内核 */
+
+    }
+    .demo .box {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        position: relative;
+        -webkit-border-radius: 100%;
+        border-radius: 100%;
+        background: #f07709;
+        color: #fff;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h1>跟我做css3的ppt（Animation介绍&Animation.css应用）</h1>
+    <div class="demo" id="demoA">
+        <h3>鼠标以上去看看效果</h3>
+        <div class="box">^_^</div>
+    </div>
+</body>
+
+</html>

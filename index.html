@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跟我做css3的ppt（Animation介绍&Animation.css应用）</title>
+    <link href="animate.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    
+    <style type="text/css">
+        .animated {
+            -webkit-animation-duration: 1.5s;
+            animation-duration: 1.5s;
+        }
+
+        .ppt {
+            background: #333;
+            overflow: hidden;
+            color: #fff;
+            text-align: center;
+            font-family: "Microsoft YaHei", SimSun, SimHei, Arial;
+        }
+
+        .ppt .pptCon {
+            height: 300px;
+            padding: 20px;
+        }
+
+        .ppt .btns {
+            height: 40px;
+            line-height: 40px;
+            background: #000;
+        }
+
+        .ppt .btns input {
+            height: 28px;
+            line-height: 28px;
+            width: 60px;
+            text-align: center;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .ppt h1 {
+            font-size: 50px;
+            line-height: 120%;
+            padding: 20px 0 50px;
+            display: none;
+            color: #fff;
+        }
+
+        .ppt p {
+            font-size: 50px;
+            display: none;
+        }
+
+        .ppt p .txt {
+            font-size: 16px;
+        }
+    </style>
+
+    <h1>跟我做css3的ppt（Animation介绍&Animation.css应用）</h1>
+    <div class="ppt">
+        <div class="pptCon">
+            <div id="page1">
+                <h1 id="ppt-h-1" style="display:block">开始</h1>
+                <p id="ppt-p-1" style="display:block"><span class="txt">一个冷笑话.....</span></p>
+                <h1 id="ppt-h-2">从前有一只猪</h1>
+                <p id="ppt-p-2"><span class="face">(￣(oo)￣)</span></p>
+                <h1 id="ppt-h-3">第二天，它......</h1>
+                <p id="ppt-p-3"><span class="face">(=^_^=) </span></p>
+                <h1 id="ppt-h-4">胖死了......</h1>
+                <p id="ppt-p-4"><span class="face">(⊙＿⊙) </span></p>
+                <h1 id="ppt-h-5">完</h1>
+                <p id="ppt-p-5"><span class="txt">by 大话主席</span></p>
+            </div>
+        </div>
+        <div class="btns"><input id="btn1" type="button" value="第一页"> <input id="btn2" type="button" value="第二页"> <input id="btn3" type="button" value="第三页"> <input id="btn4" type="button" value="第四页"> <input id="btn5" type="button" value="第五页"></div>
+    </div>
+    <script type="text/javascript">
+        var pages = 5; //页数
+
+        //翻页效果
+        var pptGo = function(i, a1, a2, b1, b2) {
+            var h1 = document.getElementById("ppt-h-" + (i - 1));
+            var p1 = document.getElementById("ppt-p-" + (i - 1));
+            var h2 = document.getElementById("ppt-h-" + i);
+            var p2 = document.getElementById("ppt-p-" + i);
+
+            pptInit(i - 1);
+
+            setTimeout(function() {
+                h1.className = a1 + " animated";
+            }, 100);
+            setTimeout(function() {
+                p1.className = a2 + " animated"
+            }, 300);
+
+            setTimeout(function() {
+                h1.style.display = "none";
+                p1.style.display = "none";
+                h2.style.display = "block";
+                h2.className = b1 + " animated"
+            }, 1000);
+
+            setTimeout(function() {
+                p2.style.display = "block";
+                p2.className = b2 + " animated"
+            }, 1300);
+        }
+
+        //初始化
+        var pptInit = function(j) {
+            for (var i = 1; i <= pages; i++) {
+                var h1 = document.getElementById("ppt-h-" + i);
+                var p1 = document.getElementById("ppt-p-" + i);
+                h1.className = "";
+                p1.className = "";
+
+                if (i == j) {
+                    h1.style.display = "block";
+                    p1.style.display = "block";
+                } else {
+                    h1.style.display = "none";
+                    p1.style.display = "none";
+                }
+            }
+        }
+
+        //事件
+        document.getElementById("btn1").onclick = function() {
+            pptInit(1)
+        };
+        document.getElementById("btn2").onclick = function() {
+            pptGo(2, "bounceOutDown", "bounceOutDown", "bounceInLeft", "bounceInRight")
+        }
+        document.getElementById("btn3").onclick = function() {
+            pptGo(3, "rotateOutUpLeft", "rotateOutUpLeft", "flipInY", "flipInY")
+        }
+        document.getElementById("btn4").onclick = function() {
+            pptGo(4, "rollOut", "rollOut", "bounceIn", "bounceIn")
+        }
+        document.getElementById("btn5").onclick = function() {
+            pptGo(5, "rollOut", "rollOut", "bounceIn", "bounceIn")
+        }
+    </script>
+</body>
+
+</html>
